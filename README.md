@@ -72,4 +72,4 @@ $ vagrant provision
 ```
 
 ## Authors
-- Hudson Dunice (<hudson.dunice@bizairlines.com>)
+- Hudson Dunice (<dunice@gmail.com>)
