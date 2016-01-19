@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: biz.php7
+# Cookbook Name:: biz.php
 # Recipe:: default
 #
 # Copyright (C) 2015 YOUR_NAME

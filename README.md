@@ -1,4 +1,4 @@
-# biz.php7
+# biz.php
 
 ## Requirements
 - [Vagrant 1.7.4](https://www.vagrantup.com)
