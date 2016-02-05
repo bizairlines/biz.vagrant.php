@@ -6,6 +6,10 @@
 #
 # All rights reserved - Do Not Redistribute
 
+include_recipe "apt"
+
+execute "/usr/bin/apt-get update"
+
 mysql_user = "root"
 mysql_pass = "root"
 mysql_serv = "default"
@@ -19,11 +23,8 @@ mysql_service mysql_serv do
   action [:create, :start]
 end
 
-include_recipe "apt"
-
-execute "/usr/bin/apt-get update"
 package "python-software-properties"
-execute "add-apt-repository ppa:ondrej/php5-5.6"
+execute "add-apt-repository ppa:ondrej/php-7.0"
 execute "/usr/bin/apt-get update"
 
 package "build-essential"
@@ -34,20 +35,19 @@ package "libpcre3-dev"
 package "vim"
 package "wget"
 package "curl"
-package "php5"
-package "php5-dev"
-package "php5-mysql"
-package "php5-fpm"
-package "php5-cgi"
-package "php5-curl"
-package "php5-gd"
-package "php5-intl"
-package "php5-mcrypt"
-package "php5-pgsql"
-package "php5-sqlite"
-package "php5-mysql"
-package "php5-tidy"
-package "php5-xmlrpc"
+package "php7.0"
+package "php7.0-dev"
+package "php7.0-mysql"
+package "php7.0-fpm"
+package "php7.0-cgi"
+package "php7.0-curl"
+package "php7.0-gd"
+package "php7.0-intl"
+package "php7.0-mcrypt"
+package "php7.0-pgsql"
+package "php7.0-sqlite"
+package "php7.0-mysql"
+package "php7.0-tidy"
 
 execute "/usr/bin/mysql -u#{mysql_user} -p#{mysql_pass} -S /run/mysql-default/mysqld.sock -e \"GRANT ALL PRIVILEGES ON *.* TO '#{mysql_user}'@'%' IDENTIFIED BY '#{mysql_pass}' WITH GRANT OPTION;\""
 execute "/usr/bin/mysql -u#{mysql_user} -p#{mysql_pass} -S /run/mysql-default/mysqld.sock -e \"FLUSH PRIVILEGES;\""

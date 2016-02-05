@@ -1,4 +1,4 @@
-# biz.php
+# Biz Vagrant Box
 
 ## Requirements
 - [Vagrant 1.7.4](https://www.vagrantup.com)
@@ -35,7 +35,7 @@ If there is a need for using a new port, you can simply change and commit the *V
 
 ### What's inside
 - [MySQL 5.5](https://www.mysql.com/)
-- [PHP 5.6+](http://php.net/)
+- [PHP 7.0+](http://php.net/)
   - [PHPUnit](https://phpunit.de)
   - [Composer](https://getcomposer.org/)
 
