@@ -8,3 +8,5 @@ version          '1.2.0'
 
 depends "apt"
 depends "mysql"
+depends "postgresql"
+depends "openssl"

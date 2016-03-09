@@ -7,8 +7,12 @@
 # All rights reserved - Do Not Redistribute
 
 include_recipe "apt"
+include_recipe "openssl"
 
 execute "/usr/bin/apt-get update"
+package "build-essential"
+
+include_recipe "postgresql::server"
 
 mysql_user = "root"
 mysql_pass = "root"
@@ -24,10 +28,9 @@ mysql_service mysql_serv do
 end
 
 package "python-software-properties"
-execute "add-apt-repository ppa:ondrej/php-7.0"
+execute "add-apt-repository ppa:ondrej/php"
 execute "/usr/bin/apt-get update"
 
-package "build-essential"
 package "git-core"
 package "make"
 package "gcc"
@@ -46,7 +49,6 @@ package "php7.0-intl"
 package "php7.0-mcrypt"
 package "php7.0-pgsql"
 package "php7.0-sqlite"
-package "php7.0-mysql"
 package "php7.0-tidy"
 
 execute "/usr/bin/mysql -u#{mysql_user} -p#{mysql_pass} -S /run/mysql-default/mysqld.sock -e \"GRANT ALL PRIVILEGES ON *.* TO '#{mysql_user}'@'%' IDENTIFIED BY '#{mysql_pass}' WITH GRANT OPTION;\""
@@ -68,5 +70,5 @@ if not File.exists?("/usr/local/bin/phpunit")
 end
 
 # Stop Apache and remove it from auto start
-execute "service apache2 stop"
-execute "update-rc.d -f  apache2 remove"
+# execute "service apache2 stop"
+# execute "update-rc.d -f  apache2 remove"
