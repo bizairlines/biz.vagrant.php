@@ -30,10 +30,12 @@ Only this ports are available for binding:
 - 8080 (http)
 - 8443 (https)
 - 3036 (MySQL)
+- 5432 (MySQL)
 
 If there is a need for using a new port, you can simply change and commit the *Vagrantfile*. **Don't** forget to update this `README.md` file.
 
 ### What's inside
+- [PostgreSQL 9.3](http://www.postgresql.org/)
 - [MySQL 5.5](https://www.mysql.com/)
 - [PHP 7.0+](http://php.net/)
   - [PHPUnit](https://phpunit.de)
