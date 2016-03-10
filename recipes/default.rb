@@ -52,6 +52,7 @@ package "php7.0-mcrypt"
 package "php7.0-pgsql"
 package "php7.0-sqlite"
 package "php7.0-tidy"
+package "php7.0-mbstring"
 
 execute "/usr/bin/mysql -u#{mysql_user} -p#{mysql_pass} -S /run/mysql-default/mysqld.sock -e \"GRANT ALL PRIVILEGES ON *.* TO '#{mysql_user}'@'%' IDENTIFIED BY '#{mysql_pass}' WITH GRANT OPTION;\""
 execute "/usr/bin/mysql -u#{mysql_user} -p#{mysql_pass} -S /run/mysql-default/mysqld.sock -e \"FLUSH PRIVILEGES;\""
