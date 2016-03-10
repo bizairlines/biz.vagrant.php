@@ -33,6 +33,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # any other machines on the same network, but cannot be accessed (through this
   # network interface) by any external networks.
   config.vm.network :forwarded_port, guest: 80, host: 8080
+  config.vm.network :forwarded_port, guest: 81, host: 8081
+  config.vm.network :forwarded_port, guest: 82, host: 8082
+  config.vm.network :forwarded_port, guest: 83, host: 8083
+  config.vm.network :forwarded_port, guest: 84, host: 8084
+  config.vm.network :forwarded_port, guest: 85, host: 8085
   config.vm.network :forwarded_port, guest: 443, host: 8443
   config.vm.network :forwarded_port, guest: 3306, host: 3306
   config.vm.network :forwarded_port, guest: 5432, host: 5432
