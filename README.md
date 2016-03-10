@@ -51,6 +51,15 @@ Pass: `root`
 Port: `3306`
 ```
 
+#### PostgreSQL
+The PostgreSQL connection parameters are:
+```
+Host: `localhost`
+User: `postgres`
+Pass: `postgres`
+Port: `5432`
+```
+
 #### HTTP
 While we don't see a real need for using HTTP server we'll keep with PHP built-in server.
 
