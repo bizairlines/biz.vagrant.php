@@ -36,6 +36,7 @@ If there is a need for using a new port, you can simply change and commit the *V
 
 ### What's inside
 - [PostgreSQL 9.3](http://www.postgresql.org/)
+    - [Postgis 2.1](http://postgis.net/)
 - [MySQL 5.5](https://www.mysql.com/)
 - [PHP 7.0+](http://php.net/)
   - [PHPUnit](https://phpunit.de)

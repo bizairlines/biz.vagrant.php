@@ -13,6 +13,8 @@ execute "/usr/bin/apt-get update"
 package "build-essential"
 
 include_recipe "postgresql::server"
+include_recipe "locale::default"
+include_recipe "postgis::default"
 
 mysql_user = "root"
 mysql_pass = "root"
