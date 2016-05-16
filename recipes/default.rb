@@ -15,6 +15,7 @@ package "build-essential"
 include_recipe "postgresql::server"
 include_recipe "locale::default"
 include_recipe "postgis::default"
+include_recipe "mongodb3::default"
 
 mysql_user = "root"
 mysql_pass = "root"
@@ -36,6 +37,14 @@ execute "/usr/bin/apt-get update"
 package "git-core"
 package "make"
 package "gcc"
+package "g++"
+package "libcurl4-openssl-dev"
+package "pkg-config"
+package "libssl-dev"
+package "libsasl2-dev"
+package "libsslcommon2-dev"
+package "autoconf"
+package "openssl"
 package "libpcre3-dev"
 package "vim"
 package "wget"
@@ -53,6 +62,7 @@ package "php7.0-pgsql"
 package "php7.0-sqlite"
 package "php7.0-tidy"
 package "php7.0-mbstring"
+package "php7.0-soap"
 
 execute "/usr/bin/mysql -u#{mysql_user} -p#{mysql_pass} -S /run/mysql-default/mysqld.sock -e \"GRANT ALL PRIVILEGES ON *.* TO '#{mysql_user}'@'%' IDENTIFIED BY '#{mysql_pass}' WITH GRANT OPTION;\""
 execute "/usr/bin/mysql -u#{mysql_user} -p#{mysql_pass} -S /run/mysql-default/mysqld.sock -e \"FLUSH PRIVILEGES;\""
@@ -70,6 +80,18 @@ if not File.exists?("/usr/local/bin/phpunit")
   execute "wget https://phar.phpunit.de/phpunit.phar --quiet"
   execute "/bin/chmod +x phpunit.phar"
   execute "/bin/mv phpunit.phar /usr/local/bin/phpunit"
+end
+
+bash 'pecl install mongodb' do
+  code <<-EOH
+  /usr/bin/pecl install mongodb
+  echo "extension=mongodb.so" > /etc/php/7.0/cli/conf.d/20-mongodb.ini
+  echo "extension=mongodb.so" > /etc/php/7.0/fpm/conf.d/20-mongodb.ini
+  echo "extension=mongodb.so" > /etc/php/7.0/cgi/conf.d/20-mongodb.ini
+  echo "extension=mongodb.so" > /etc/php/7.0/mods-available/mongodb.ini
+  EOH
+
+  not_if 'test -f /etc/php/7.0/cli/conf.d/20-mongodb.ini'
 end
 
 # Stop Apache and remove it from auto start
