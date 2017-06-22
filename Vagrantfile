@@ -39,8 +39,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.network :forwarded_port, guest: 84, host: 8084
   config.vm.network :forwarded_port, guest: 85, host: 8085
   config.vm.network :forwarded_port, guest: 443, host: 8443
+  config.vm.network :forwarded_port, guest: 8000, host: 8000, protocol: 'tcp'
+  config.vm.network :forwarded_port, guest: 8000, host: 8000, protocol: 'udp'
   config.vm.network :forwarded_port, guest: 3306, host: 3306
   config.vm.network :forwarded_port, guest: 5432, host: 5432
+  config.vm.network :forwarded_port, guest: 9200, host: 9200
   config.vm.network :private_network, type: 'dhcp'
 
 
@@ -53,7 +56,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
   # config.vm.synced_folder "../data", "/vagrant_data"
-  config.vm.synced_folder './www', '/vagrant/www', type: 'nfs'
+  config.vm.synced_folder './www', '/vagrant/www' #, type: 'nfs'
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
@@ -70,7 +73,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # View the documentation for the provider you're using for more
   # information on available options.
   config.vm.provider "virtualbox" do |v|
-    v.memory = 2048
+    v.memory = 4056
   end
 
   # The path to the Berksfile to use with Vagrant Berkshelf
